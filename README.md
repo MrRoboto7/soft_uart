@@ -3,6 +3,7 @@
 Software-based serial port module for Raspberry Pi.
 
 This module creates a software-based serial port using a configurable pair of GPIO pins. The serial port will appear as `/dev/ttySOFT0`.
+
 Module modified to work in Kernel version 6.12.47+rpt-rpi-v8
 
 ## Features
@@ -36,8 +37,8 @@ Before loading use to get the 'offset' of the gpio
 ```
 ls -d /sys/class/gpio/gpiochip*
 ```
-gpiochip512: add 512 to the gpio number
-gpiochip0: do not add to the gpio number
+* gpiochip512: add 512 to the gpio number
+* gpiochip0: do not add to the gpio number
 
 Module parameters:
 
