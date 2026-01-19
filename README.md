@@ -33,7 +33,7 @@ I haven't tried cross-compiling this module, but it should work as well.
 
 
 ## Loading
-Before loading use to get the 'offset' of the gpio 
+Before loading get the 'offset' of the gpio 
 ```
 ls -d /sys/class/gpio/gpiochip*
 ```
