@@ -1,9 +1,9 @@
-# soft_uart
+# soft_uart 
 
 Software-based serial port module for Raspberry Pi.
 
 This module creates a software-based serial port using a configurable pair of GPIO pins. The serial port will appear as `/dev/ttySOFT0`.
-
+Module modified to work in Kernel version 6.12.47+rpt-rpi-v8
 
 ## Features
 
@@ -18,12 +18,7 @@ This module creates a software-based serial port using a configurable pair of GP
 
 Fetch the source:
 ```
-git clone https://github.com/adrianomarto/soft_uart
-```
-
-Install the package `raspberrypi-kernel-headers`:
-```
-sudo apt-get install raspberrypi-kernel-headers
+git clone https://github.com/MrRoboto7/soft_uart
 ```
 
 Run `make` and `make install`, as usual.
@@ -37,6 +32,12 @@ I haven't tried cross-compiling this module, but it should work as well.
 
 
 ## Loading
+Before loading use to get the 'offset' of the gpio 
+```
+ls -d /sys/class/gpio/gpiochip*
+```
+gpiochip512: add 512 to the gpio number
+gpiochip0: do not add to the gpio number
 
 Module parameters:
 
@@ -78,3 +79,4 @@ When choosing the baud rate, take into account that:
 * There will be other processes competing for CPU time.
 
 As a result, you can expect communication errors when using fast baud rates. So I would not try to go any faster than 4800 bps.
+
