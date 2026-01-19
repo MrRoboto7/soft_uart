@@ -9,6 +9,8 @@
 #include <linux/tty.h>
 #include <linux/tty_flip.h>
 #include <linux/version.h>
+//agrega funcionalidad al nuevo kernel 64
+#include <linux/gpio/consumer.h>
 
 static irq_handler_t handle_rx_start(unsigned int irq, void* device, struct pt_regs* registers);
 static enum hrtimer_restart handle_tx(struct hrtimer* timer);
@@ -129,7 +131,8 @@ int raspberry_soft_uart_close(void)
 int raspberry_soft_uart_set_baudrate(const int baudrate) 
 {
   period = ktime_set(0, 1000000000/baudrate);
-  gpio_set_debounce(gpio_rx, 1000/baudrate/2);
+  //gpio_set_debounce(gpio_rx, 1000/baudrate/2);
+  gpiod_set_debounce(gpio_to_desc(gpio_rx), 1000/baudrate/2);
   return 1;
 }
 
